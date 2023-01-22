@@ -112,7 +112,7 @@ class UserController extends Controller
             $file_name_family_card = !empty($request->family_card) ? $user_full_name.'_family_card'.'.'.$request->family_card->extension() : $check->family_card;
             
             $pas_photo_move = !empty($request->pas_photo) ? $request->pas_photo->move(public_path('pas_photo'), $file_name_pas_photo) : '';
-            $sd_certificate = !empty($request->sd_certificate) ? $request->pas_photo->move(public_path('sd_certificate'), $file_name_sd_certificate) : '';
+            $sd_certificate = !empty($request->sd_certificate) ? $request->sd_certificate->move(public_path('sd_certificate'), $file_name_sd_certificate) : '';
             $birth_certificate = !empty($request->birth_certificate) ? $request->birth_certificate->move(public_path('birth_certificate'), $file_name_birth_certificate) : '';
 
             $check->pas_photo  =  $file_name_pas_photo;
@@ -133,8 +133,8 @@ class UserController extends Controller
             $document = new StudentDocument();
             $document->user_id = $user->id;
             $document->pas_photo   = 'pas_photo/'.$file_name_pas_photo;
-            $document->sd_certificate   = 'pas_photo/'.$file_name_sd_certificate;
-            $document->birth_certificate   = 'pas_photo/'.$file_name_sd_certificate;
+            $document->sd_certificate   = 'sd_certificate/'.$file_name_sd_certificate;
+            $document->birth_certificate   = 'birth_certificate/'.$file_name_sd_certificate;
             $document->save();
         }
         
