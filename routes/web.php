@@ -26,7 +26,7 @@ Route::get('/user/form/score-presence', [App\Http\Controllers\User\UserControlle
 Route::get('/user/form/biodata-parent', [App\Http\Controllers\User\UserController::class, 'studentBiodataParent'])->name('user.student.biodata_parent');
 Route::get('/user/form/document', [App\Http\Controllers\User\UserController::class, 'studentDocument'])->name('user.student.student_document');
 Route::post('/user/store/biodata', [App\Http\Controllers\User\UserController::class, 'storeOrUpdateStudent'])->name('user.store_biodata');
-Route::post('/user/store/school-origin', [App\Http\Controllers\User\UserController::class, 'storeOrUpdateStudentSchoo;'])->name('user.store_school_origin');
+Route::post('/user/store/school-origin', [App\Http\Controllers\User\UserController::class, 'storeOrUpdateStudentSchool'])->name('user.store_school_origin');
 Route::post('/user/store/score', [App\Http\Controllers\User\UserController::class, 'storeOrUpdateScoreStudent'])->name('user.store_score_student');
 Route::post('/user/store/presence', [App\Http\Controllers\User\UserController::class, 'storeOrUpdatePresence'])->name('user.store_presence');
 Route::post('/user/store/father', [App\Http\Controllers\User\UserController::class, 'storeOrUpdateFatherStudent'])->name('user.store_father');
