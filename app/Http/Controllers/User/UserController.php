@@ -127,8 +127,8 @@ class UserController extends Controller
             $file_name_birth_certificate = $user_full_name.'_birth_certificate'.'.'.$request->birth_certificate->extension();  
          
             $request->pas_photo->move(public_path('pas_photo'), $file_name_pas_photo);
-            $request->pas_photo->move(public_path('sd_certificate'), $file_name_sd_certificate);
-            $request->pas_photo->move(public_path('birth_certificate'), $file_name_birth_certificate);
+            $request->sd_certificate->move(public_path('sd_certificate'), $file_name_sd_certificate);
+            $request->birth_certificate->move(public_path('birth_certificate'), $file_name_birth_certificate);
     
             $document = new StudentDocument();
             $document->user_id = $user->id;
