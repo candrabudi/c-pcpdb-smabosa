@@ -62,9 +62,6 @@
                             <span class="app-brand-text demo text-body fw-bold ms-1">SMABOSA</span>
                             </a>
                         </div>
-                        <!-- /Logo -->
-                        <h4 class="mb-1 pt-2">Adventure starts here 🚀</h4>
-                        <p class="mb-4">Make your app management easy and fun!</p>
 
                         <form id="formAuthentication" class="mb-3" action="{{ route('register') }}" method="POST">
                             @csrf
@@ -103,13 +100,12 @@
                                 </div>
                             </div>
 
-                            <button class="btn btn-primary d-grid w-100">Sign up</button>
+                            <button class="btn btn-primary d-grid w-100">Register</button>
                         </form>
 
                         <p class="text-center">
-                            <span>Already have an account?</span>
                             <a href="auth-login-basic.html">
-                                <span>Sign in instead</span>
+                                <span>Login</span>
                             </a>
                         </p>
                     </div>
