@@ -104,7 +104,7 @@
                         </form>
 
                         <p class="text-center">
-                            <a href="auth-login-basic.html">
+                            <a href="{{ route('login) }}">
                                 <span>Login</span>
                             </a>
                         </p>
