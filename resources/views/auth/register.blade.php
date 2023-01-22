@@ -104,7 +104,7 @@
                         </form>
 
                         <p class="text-center">
-                            <a href="{{ route('login) }}">
+                            <a href="{{ route('login') }}">
                                 <span>Login</span>
                             </a>
                         </p>
