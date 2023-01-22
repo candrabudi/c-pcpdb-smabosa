@@ -99,6 +99,8 @@ class UserController extends Controller
             'sd_certificate'    => 'mimes:png,jpg,jpeg,pdf|max:2048',
             'pas_photo'         => 'mimes:png,jpg,jpeg|max:2048',
             'birth_certificate' => 'mimes:png,jpg,jpeg|max:2048',
+            'family_card'       => 'mimes:png,jpg,jpeg|max:2048',
+            'signature'         => 'mimes:png,jpg,jpeg|max:2048',
         ]);
 
         $check = StudentDocument::where('user_id', $user->id)->first();
@@ -109,34 +111,52 @@ class UserController extends Controller
             $file_name_pas_photo = !empty($request->pas_photo) ? 'pas_photo/'.$user_full_name.'_pas_photo'.'.'.$request->pas_photo->extension() : $check->pas_photo;  
             $file_name_sd_certificate = !empty($request->sd_certificate) ? 'sd_certificate/'.$user_full_name.'_sd_certificate'.'.'.$request->sd_certificate->extension() : $check->sd_certificate;
             $file_name_birth_certificate = !empty($request->birth_certificate) ? 'birth_certificate/'.$user_full_name.'_birth_certificate'.'.'.$request->birth_certificate->extension() : $check->birth_certificate;
-            $file_name_family_card = !empty($request->family_card) ? $user_full_name.'_family_card'.'.'.$request->family_card->extension() : $check->family_card;
+            $file_name_family_card = !empty($request->family_card) ? 'family_card/'.$user_full_name.'_family_card'.'.'.$request->family_card->extension() : $check->family_card;
+            $file_name_jhs_raport = !empty($request->jhs_raport) ? 'jhs_raport/'.$user_full_name.'_jhs_raport'.'.'.$request->jhs_raport->extension() : $check->jhs_raport;
+            $file_name_signature = !empty($request->signature) ? 'signature/'.$user_full_name.'_signature'.'.'.$request->signature->extension() : $check->signature;
             
             $pas_photo_move = !empty($request->pas_photo) ? $request->pas_photo->move(public_path('pas_photo'), $file_name_pas_photo) : '';
             $sd_certificate = !empty($request->sd_certificate) ? $request->sd_certificate->move(public_path('sd_certificate'), $file_name_sd_certificate) : '';
             $birth_certificate = !empty($request->birth_certificate) ? $request->birth_certificate->move(public_path('birth_certificate'), $file_name_birth_certificate) : '';
+            $family_card = !empty($request->family_card) ? $request->family_card->move(public_path('family_card'), $file_name_family_card) : '';
+            $jhs_raport = !empty($request->jhs_raport) ? $request->jhs_raport->move(public_path('jhs_raport'), $file_name_jhs_raport) : '';
+            $signature = !empty($request->signature) ? $request->signature->move(public_path('signature'), $file_name_signature) : '';
 
             $check->pas_photo  =  $file_name_pas_photo;
             $check->sd_certificate  = $file_name_sd_certificate;
             $check->birth_certificate  = $file_name_birth_certificate;
             $check->family_card  = $file_name_family_card;
+            $check->jhs_raport  = $file_name_jhs_raport;
+            $check->signature  = $file_name_signature;
             $check->save();
         }else{
 
             $file_name_pas_photo = $user_full_name.'_pas_photo'.'.'.$request->pas_photo->extension();  
             $file_name_sd_certificate = $user_full_name.'_sd_certificate'.'.'.$request->sd_certificate->extension();  
             $file_name_birth_certificate = $user_full_name.'_birth_certificate'.'.'.$request->birth_certificate->extension();  
+            $file_name_family_card = $user_full_name.'_family_card'.'.'.$request->family_card->extension();  
+            $file_name_jhs_raport = $user_full_name.'_jhs_raport'.'.'.$request->jhs_raport->extension();  
+            $file_name_signature = $user_full_name.'_signature'.'.'.$request->signature->extension();  
          
             $request->pas_photo->move(public_path('pas_photo'), $file_name_pas_photo);
             $request->sd_certificate->move(public_path('sd_certificate'), $file_name_sd_certificate);
             $request->birth_certificate->move(public_path('birth_certificate'), $file_name_birth_certificate);
+            $request->family_card->move(public_path('family_card'), $file_name_family_card);
+            $request->jhs_raport->move(public_path('jhs_raport'), $file_name_jhs_raport);
+            $request->signature->move(public_path('signature'), $file_name_signature);
     
             $document = new StudentDocument();
             $document->user_id = $user->id;
             $document->pas_photo   = 'pas_photo/'.$file_name_pas_photo;
             $document->sd_certificate   = 'sd_certificate/'.$file_name_sd_certificate;
-            $document->birth_certificate   = 'birth_certificate/'.$file_name_sd_certificate;
+            $document->birth_certificate   = 'birth_certificate/'.$file_name_birth_certificate;
+            $document->family_card   = 'family_card/'.$file_name_sd_certificate;
+            $document->jhs_raport   = 'jhs_raport/'.$file_name_jhs_raport;
+            $document->signature   = 'signature/'.$file_name_signature;
             $document->save();
         }
+
+        return redirect()->route('user.student.student_document');
         
 
     }

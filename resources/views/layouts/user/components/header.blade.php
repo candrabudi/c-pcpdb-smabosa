@@ -19,13 +19,6 @@
 
         <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
             <ul class="navbar-nav flex-row align-items-center ms-auto">
-
-                <li class="nav-item navbar-search-wrapper me-2 me-xl-0">
-                    <a class="nav-link search-toggler" href="javascript:void(0);">
-                        <i class="ti ti-search ti-md"></i>
-                    </a>
-                </li>
-
                 <li class="nav-item me-2 me-xl-0">
                     <a class="nav-link style-switcher-toggle hide-arrow" href="javascript:void(0);">
                         <i class="ti ti-md"></i>
@@ -69,20 +62,12 @@
                         </ul>
                     </li>
                 @else
-                    <div class="row">
-                        <div class="col-md-6">
-                            <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
-                        </div>
-                        <div class="col-md-6">
-                            <a href="{{ route('register') }}" class="btn btn-success">Register</a>
-                        </div>
-                    </div>
+                    <li>
+                        <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
+                        <a href="{{ route('register') }}" class="btn btn-success">Register</a>
+                    </li>
                 @endif
             </ul>
         </div>
-        <!-- <div class="navbar-search-wrapper search-input-wrapper container-xxl d-none">
-            <input type="text" class="form-control search-input border-0" placeholder="Search..." aria-label="Search..." />
-            <i class="ti ti-x ti-sm search-toggler cursor-pointer"></i>
-        </div> -->
     </div>
 </nav>
