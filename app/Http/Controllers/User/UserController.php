@@ -106,9 +106,9 @@ class UserController extends Controller
         $user_full_name = str_replace(' ', '_', $user->full_name);
         if(!empty($check)){
 
-            $file_name_pas_photo = !empty($request->pas_photo) ? $user_full_name.'_pas_photo'.'.'.$request->pas_photo->extension() : $check->pas_photo;  
-            $file_name_sd_certificate = !empty($request->sd_certificate) ? $user_full_name.'_sd_certificate'.'.'.$request->sd_certificate->extension() : $check->sd_certificate;
-            $file_name_birth_certificate = !empty($request->birth_certificate) ? $user_full_name.'_birth_certificate'.'.'.$request->birth_certificate->extension() : $check->birth_certificate;
+            $file_name_pas_photo = !empty($request->pas_photo) ? 'pas_photo/'.$user_full_name.'_pas_photo'.'.'.$request->pas_photo->extension() : $check->pas_photo;  
+            $file_name_sd_certificate = !empty($request->sd_certificate) ? 'sd_certificate/'.$user_full_name.'_sd_certificate'.'.'.$request->sd_certificate->extension() : $check->sd_certificate;
+            $file_name_birth_certificate = !empty($request->birth_certificate) ? 'birth_certificate/'.$user_full_name.'_birth_certificate'.'.'.$request->birth_certificate->extension() : $check->birth_certificate;
             $file_name_family_card = !empty($request->family_card) ? $user_full_name.'_family_card'.'.'.$request->family_card->extension() : $check->family_card;
             
             $pas_photo_move = !empty($request->pas_photo) ? $request->pas_photo->move(public_path('pas_photo'), $file_name_pas_photo) : '';
